@@ -1,18 +1,21 @@
-:<html>
+<html>
 <head>
 	<title>LookAtMe</title>
 	<link rel="stylesheet" href="../s/css/foundation.css">
 	<link rel="stylesheet" href="../s/css/normalize.css">
 	<link rel="stylesheet" href="../s/css/look.css" media="screen">
+	<meta charset="utf-8">
 </head>
 <body>
-	<div class="container page">
-		<div class="row">
-			<div class="large-8 large-centered">
+	<div class="page">
+		<div class="top">
 				<div class="words">
-					<p>「你能听到我的心在砰砰跳，你却假装什么都不知道」</p>
+					「你能听到我的心在砰砰跳，<br>
+						你却假装什么都不知道。」
 				</div>
-			</div>
+				<div class="logo">
+					<img src="http://placehold.it/300x150&text=300x150LOGO">
+				</div>
 		</div>
 	</div>
 
