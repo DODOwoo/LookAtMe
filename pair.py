@@ -20,9 +20,6 @@ def adduser():
 	data["score"] = 0
 	mongoservice.insert_user(data)
 
-@route('/remind/s/<fname>')
-def s(fname):
-	return static_file(fname,'./s')
 
 @route('/mood/add')
 def add_mood():
