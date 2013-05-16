@@ -1,9 +1,9 @@
 <html>
 <head>
 	<title>LookAtMe</title>
-	<link rel="stylesheet" href="../s/css/foundation.css">
-	<link rel="stylesheet" href="../s/css/normalize.css">
-	<link rel="stylesheet" href="../s/css/look.css" media="screen">
+	<link rel="stylesheet" href="/s/css/foundation.css">
+	<link rel="stylesheet" href="/s/css/normalize.css">
+	<link rel="stylesheet" href="/s/css/look.css" media="screen">
 	<meta charset="utf-8">
 </head>
 <body>
@@ -13,11 +13,62 @@
 					「你能听到我的心在砰砰跳，<br>
 						你却假装什么都不知道。」
 				</div>
-				<div class="logo">
-					<img src="http://placehold.it/300x150&text=300x150LOGO">
+				<div class="login-fm">
+					<div class="logo">
+						<img src="http://placehold.it/300x150&text=300x150LOGO">
+					</div>
+					<div class="l">
+						
+						<div class="btns tabs ">
+							<ul>
+								<li class="left" data-target="login">
+									<a href="javascript:;">login</a>
+								</li>
+								<li class="left" data-target="signup">
+									<a href="javascript:;">signup</a>
+								</li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+						<div class="fm tab-item active" id="login">
+							<ul>
+								<li>
+									<div class="fit">Name：</div><input type="text" class="ipt">
+								</li>
+								<li>
+									<div class="fit">Password:</div><input type="text" class="ipt">
+								</li>
+								<li>
+									<button class="enter">enter</button>
+								</li>
+							</ul>
+							
+						</div>
+						<div class="fm tab-item" id="signup">
+							<ul>
+								<li>
+									<div class="fit">Name：</div><input type="text" class="ipt">
+								</li>
+								<li>
+									<div class="fit">Password:</div><input type="text" class="ipt">
+								</li>
+								<li>
+									<button class="enter">signup</button>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
+		</div>
+		<div class="bottom">
+			DODOWOO & FULUCHII
 		</div>
 	</div>
 
+	<script src="s/seajs/sea.js"
+        data-config="pair/config.js"
+        data-main="pair/nologin.js"></script>
+
+</body>
 </body>
 </html>

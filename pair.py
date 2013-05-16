@@ -4,7 +4,7 @@ import mongoservice
 
 @route('/show/<id>')
 def show_heart(id):
-	return 'hello my heart'+id
+	return template('template/main.tpl')
 
 @route('/nologin')
 def nologin():
@@ -34,5 +34,10 @@ def connect(secret):
 @route('/s/css/<fname>')
 def s(fname):
 	return static_file(fname,'./s/css')
+
+@route('/s/<filepath:path>')
+def js(filepath):
+	return static_file(filepath,'./s/')
+
 
 run(host='localhost', port=8080, debug=True)
