@@ -18,6 +18,12 @@
       	$('div.tab-item.active').find('.gchart').click();
       }
     </script>
+    <script>
+    var arr = [];
+    %for m in moods:
+    	arr.push({{m['mood']}})
+    %end
+    </script>
 </head>
 <body>
 	<div class="container">	
