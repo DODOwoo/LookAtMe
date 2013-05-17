@@ -10,6 +10,9 @@ def show_heart(id):
 def nologin():
 	return template('template/show.tpl')
 
+@route('/log/<id>')
+def show_log(id):
+        return template('template/log.tpl')
 
 
 @route('/adduser',method='POST')
