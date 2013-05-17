@@ -9,67 +9,13 @@
 			height: 350px;
 			background-color: rgb(240,240,240);
 		}
-		
-		.our .title{
-			background-color: rgb(230,230,230);
-			height: 50px;
-		}
 	</style>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-      	var urchart = $.merge({
-         'data' : google.visualization.arrayToDataTable([
-          ['Day', 'TA的心情'],
-          ['5.15',  80],
-          ['5.16',  50],
-          ['5.17',  90],
-          ['5.18',  70]
-        ]),
-
-         'options' : {
-          //title: 'Company Performance'
-        }
-        },{});
-        
-        var mychart = $.merge({
-         'data' : google.visualization.arrayToDataTable([
-          ['Day', '我的心情'],
-          ['5.15',  70],
-          ['5.16',  80],
-          ['5.17',  50],
-          ['5.18',  80]
-        ]),
-
-         'options' : {
-          //title: 'Company Performance'
-        }
-        },{});
-        
-        var ochart = $.merge({
-         'data' : google.visualization.arrayToDataTable([
-		  ['Day', 'TA的心情','我的心情'],
-          ['5.15',  80,	70],
-          ['5.16',  50, 80],
-          ['5.17',  90, 50],
-          ['5.18',  70, 80]
-        ]),
-
-         'options' : {
-          title: 'Company Performance'
-        }
-        },{});
-
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(ochart['data'], ochart['options']);
-        
-        var m_chart = new google.visualization.LineChart(document.getElementById('m_chart_div'));
-        m_chart.draw(mychart['data'], mychart['options']);
-        
-        var u_chart = new google.visualization.LineChart(document.getElementById('u_chart_div'));
-        u_chart.draw(urchart['data'], urchart['options']);
+      	$('div.tab-item.active').find('.gchart').click();
       }
     </script>
 </head>
@@ -123,17 +69,17 @@
 		<div class="tab-con diary">
 			<div class="me tab-item active" id="mytab">	
 				<div class="row">
-					<div id="m_chart_div" style="width: 900px; height: 500px;"></div>
+					<div id="m_chart_div" class="gchart" onclick="drawme(this)" style="width: 900px; height: 500px;"></div>
 				</div>
 			</div>
 			<div class="you tab-item" id="yourtab">
 				<div class="row">			
-					<div id="u_chart_div" style="width: 900px; height: 500px;"></div>
+					<div id="u_chart_div" class="gchart" onclick="drawme(this)" style="width: 900px; height: 500px;"></div>
 				</div>
 			</div>
 			<div class="our tab-item" id="ourtab">	
 				<div class="row">
-					<div id="chart_div" style="width: 900px; height: 500px;"></div>
+					<div id="chart_div" class="gchart" onclick="drawme(this)" style="width: 900px; height: 500px;"></div>
 				</div>
 			</div>
 		</div>
@@ -141,6 +87,45 @@
 </div>
 <script src="/s/seajs/sea.js"
         data-config="pair/config.js"
-        data-main="pair/main.js"></script>
+        data-main="pair/log.js"></script>
+        <script type="text/javascript">
+        function drawme(ct){
+        	var chartdata = google.visualization.arrayToDataTable([
+          ['Day', 'TA的心情'],
+          ['5.15',  80],
+          ['5.16',  50],
+          ['5.17',  90],
+          ['5.18',  70]
+        ]);
+        	if(ct.id=='m_chart_div'){
+        		chartdata = google.visualization.arrayToDataTable([
+          ['Day', '我的心情'],
+          ['5.15',  70],
+          ['5.16',  80],
+          ['5.17',  50],
+          ['5.18',  80]
+        ]);
+        	}
+        	else if(ct.id == 'chart_div'){
+        	chartdata = google.visualization.arrayToDataTable([
+		  ['Day', 'TA的心情','我的心情'],
+          ['5.15',  80,	70],
+          ['5.16',  50, 80],
+          ['5.17',  90, 50],
+          ['5.18',  70, 80]
+        ])
+        	}
+        	var urchart = $.merge({
+         'data' : chartdata,
+
+         'options' : {
+          title: 'Mood Chart'
+        }
+        },{});
+        
+        var chart = new google.visualization.LineChart(document.getElementById(ct.id));
+        chart.draw(urchart['data'], urchart['options']);
+       	}
+        </script>
 </body>
 </html>

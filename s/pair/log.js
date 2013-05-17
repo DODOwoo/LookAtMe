@@ -7,5 +7,5 @@ define(function(require) {
   s.init();
   var t = new Tabs('.mainbar');
   t.init();
-
+  t.cback();
 });
