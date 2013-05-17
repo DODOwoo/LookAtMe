@@ -1,5 +1,5 @@
 define(function(require) {
-
+  var $ = require("jquery");
   var Navbar = require('./nav');
   var Tabs = require('./tab');
 

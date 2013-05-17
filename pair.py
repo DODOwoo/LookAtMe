@@ -12,8 +12,13 @@ def nologin():
 
 @route('/log/<id>')
 def show_log(id):
-    moods = mongoservice.find_someone_log(id)
-    return template('template/log.tpl',moods=moods)
+    ourmoods = {};
+    mymoods = mongoservice.find_someone_log(id)
+    ourmoods['my'] = mymoods
+    #get pair's id
+    urmoods = mongoservice.find_someone_log('fuluchii')
+    ourmoods['your'] = urmoods
+    return template('template/log.tpl',moods=ourmoods)
 
 
 @route('/adduser',method='POST')

@@ -19,10 +19,26 @@
       }
     </script>
     <script>
-    var arr = [];
-    %for m in moods:
-    	arr.push({{m['mood']}})
+    var dict = {};    
+    var arr_my = [];
+    arr_my.push(['Day','我的心情']);    
+    var arr_ur=[];
+    arr_ur.push(['Day','TA的心情']);
+    var arr=[];
+    arr.push(['Day','TA的心情','我的心情']);
+    
+    %for m in moods['my']:
+    	arr_my.push([{{m['adddate']}},{{m['mood']}}]);
+    %end    
+    dict['my'] = arr_my.sort(function(a,b){return a[0]-b[0]});
+    
+    %for m in moods['your']:
+    	arr_ur.push([{{m['adddate']}},{{m['mood']}}]);
     %end
+    dict['your'] = arr_ur.sort(function(a,b){return a[0]-b[0]});
+ 
+    arr.sort(function(a,b){return b[0]-a[0]})
+    dict['our'] = arr;
     </script>
 </head>
 <body>
@@ -95,22 +111,34 @@
         data-config="pair/config.js"
         data-main="pair/log.js"></script>
         <script type="text/javascript">
+        	   
+    var j = 0;
+    arr_my.forEach(function(a,b){
+		console.log(arr_my[b][0]);
+		if(arr_my[b][0]<arr_ur[j][0])
+    });
+		</script>
+        <script type="text/javascript">
         function drawme(ct){
-        	var chartdata = google.visualization.arrayToDataTable([
+        	var chartdata = google.visualization.arrayToDataTable(
+        	dict['your']
+        	/*[
           ['Day', 'TA的心情'],
           ['5.15',  80],
           ['5.16',  50],
           ['5.17',  90],
           ['5.18',  70]
-        ]);
+        ]*/);
         	if(ct.id=='m_chart_div'){
-        		chartdata = google.visualization.arrayToDataTable([
+        		chartdata = google.visualization.arrayToDataTable(
+        		dict['my']
+        		/*[
           ['Day', '我的心情'],
           ['5.15',  70],
           ['5.16',  80],
           ['5.17',  50],
           ['5.18',  80]
-        ]);
+        ]*/);
         	}
         	else if(ct.id == 'chart_div'){
         	chartdata = google.visualization.arrayToDataTable([
