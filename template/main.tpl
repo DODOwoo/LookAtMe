@@ -59,7 +59,18 @@
 						<span class="moodbar">
 							<em></em>
 						</span>
-						<div></div>
+						<div class="mood-txt"></div>
+						<div class="modifyMood">
+							<div class="addbtn left btn">
+								<a href="javascript:;"><img src="http://placehold.it/150x50&text=add5"/></a>
+							</div>
+							<div class="submit left btn">
+								<a  href="javascript:;"><img src="http://placehold.it/150x50&text=go"/></a>
+							</div>
+							<div class="minusebtn left btn">
+								<a  href="javascript:;"><img src="http://placehold.it/150x50&text=minus5"/></a>
+							</div>							
+						</div>
 					</div>	
 				</div>
 			</div>
@@ -72,18 +83,23 @@
 						<span class="moodbar">
 							<em></em>
 						</span>
-						<div></div>
+						<div class="mood-txt"></div>
 					</div>	
 					<div class="writeup row">
 						不知道放点什么，也许是提示语，也许是TA说的话。也许有个输入框，反正写功能的控件都先不做。
 					</div>
 				</div>
 
-
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	var mymood = {{mymood}};
+	var yourmood = {{yourmood}};
+	var myid = {{myid}};
+	var yourid = {{yourid}};
+</script>
 <script src="/s/seajs/sea.js"
         data-config="pair/config.js"
         data-main="pair/main.js"></script>

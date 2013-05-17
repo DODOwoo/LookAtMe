@@ -1,10 +1,12 @@
-from bottle import route,run,response,template,error,request,redirect,static_file,default_app
+from bottle import route,run,response,template,error,request,redirect,static_file,default_app,view
 from json import dumps
 import mongoservice
 
 @route('/show/<id>')
+@view('template/main.tpl')
 def show_heart(id):
-	return template('template/main.tpl')
+	yourid = 1-int(id)
+	return dict(mymood=40,yourmood=50,myid=int(id),yourid=yourid)
 
 @route('/nologin')
 def nologin():

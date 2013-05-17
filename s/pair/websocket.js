@@ -1,20 +1,30 @@
 define(function(require,exports,module){
-	function WSocket(url){
+	function WSocket(url,moodbar,myid){
 		this.ws = new WebSocket(url);
+		this.moodbar = moodbar;
+		this.myid = myid;
 	}
 
 	WSocket.prototype = {
 		constructor: WSocket,
 		
-		init: function(moodbar){
-			var moodbar = moodbar;
-			var ws = this.ws;
+		init: function(){
+			var moodbar = this.moodbar,
+				ws = this.ws,
+				myid = this.myid;
 			ws.onmessage = function (evt) {
-        		var data = evt.data;
-        		console.log(data)
-        		moodbar.changeMood(data);
+        		var data = JSON.parse(evt.data);
+        		if(data["yourid"] == myid){
+        			moodbar.changeMood(data["mood"]);
+        		}
     		};
+		},
+		sendMsg: function(data){
+			var ws = this.ws;
+			ws.send(data);
 		}
+
+
 		
 	}
 
