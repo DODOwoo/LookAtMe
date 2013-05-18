@@ -6,6 +6,6 @@ define(function(require) {
   var s = new Navbar('.menu-bar');
   s.init();
   var t = new Tabs('.mainbar');
-  // t.init();
+  t.init();
   t.cback();
 });
