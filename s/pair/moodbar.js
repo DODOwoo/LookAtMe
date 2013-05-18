@@ -37,12 +37,16 @@
  				minusebtn = this.minusebtn,
  				submitbtn = this.submit
  			addbtn.on("click",function(){
- 				mood = mood +5;
- 				refresh();
+ 				if(mood <=95){
+	 				mood = mood +5;
+	 				refresh();
+	 			}
  			});
  			minusebtn.on("click",function(){
- 				mood = mood -5;
- 				refresh();
+ 				if(mood >=5){
+ 					mood = mood -5;
+ 					refresh();
+ 				}
  			});
  			submitbtn.on("click",function(){
  				var data = {

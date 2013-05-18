@@ -42,7 +42,7 @@ def deal_with_moodchange(data):
 
 
 def sms_minimal(msg,phone):
-    twilioService.sendSMSMsg("中文短信测试!!!!!!! TA现在的心情指数是"+str(msg)+"分",phone)        
+    twilioService.sendSMSMsg("中文短信测试!!!! TA现在的心情指数是"+str(msg),phone)        
 
 
 from gevent.pywsgi import WSGIServer
