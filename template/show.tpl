@@ -30,20 +30,20 @@
 							</ul>
 						</div>
 						<div class="clearfix"></div>
-						<div class="fm tab-item active" id="login">
+						<form action="/login" class="fm tab-item active" id="login" method="POST">
 							<ul>
 								<li>
-									<div class="fit">Name：</div><input type="text" class="ipt">
+									<div class="fit">Name：</div><input type="text" name="name" class="ipt">
 								</li>
 								<li>
-									<div class="fit">Password:</div><input type="text" class="ipt">
+									<div class="fit">Password:</div><input type="text" name="password" class="ipt">
 								</li>
 								<li>
 									<button class="enter">enter</button>
 								</li>
 							</ul>
 							
-						</div>
+						</form>
 						<div class="fm tab-item" id="signup">
 							<ul>
 								<li>

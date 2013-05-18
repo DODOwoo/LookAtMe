@@ -32,7 +32,7 @@ def handle_websocket():
 
 def deal_with_moodchange(data):
     yourid = data["yourid"]
-    user = mongoservice.find_someone("fuluchii")
+    user = mongoservice.find_someone(yourid)
     if user.count() > 0:
         user = user[0]
         phone = user["phone"]

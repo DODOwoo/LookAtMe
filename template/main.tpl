@@ -97,8 +97,8 @@
 <script>
 	var mymood = {{mymood}};
 	var yourmood = {{yourmood}};
-	var myid = {{myid}};
-	var yourid = {{yourid}};
+	var myid = '{{myid}}';
+	var yourid = '{{yourid}}';
 </script>
 <script src="/s/seajs/sea.js"
         data-config="pair/config.js"

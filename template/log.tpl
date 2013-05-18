@@ -28,12 +28,12 @@
     arr.push(['Day','TA的心情','我的心情']);
     
     %for m in moods['my']:
-    	arr_my.push([{{m["adddate"]}},{{m["score"]}}]);
+    	arr_my.push([{{m["adddate"]}},{{m["mood"]}}]);
     %end    
     dict['my'] = arr_my.sort(function(a,b){return a[0]-b[0]});
     
     %for m in moods['your']:
-    	arr_ur.push([{{m['adddate']}},{{m['score']}}]);
+    	arr_ur.push([{{m['adddate']}},{{m['mood']}}]);
     %end
     dict['your'] = arr_ur.sort(function(a,b){return a[0]-b[0]});
  
@@ -89,7 +89,7 @@
 			</ul>
 		</div>
 		<div class="tab-con diary">
-			<div class="me tab-item active" id="mytab">	
+			<div class="me tab-item " id="mytab">	
 				<div class="row">
 					<div id="m_chart_div" class="gchart" onclick="drawme(this)" style="width: 900px; height: 500px;"></div>
 				</div>
@@ -99,7 +99,7 @@
 					<div id="u_chart_div" class="gchart" onclick="drawme(this)" style="width: 900px; height: 500px;"></div>
 				</div>
 			</div>
-			<div class="our tab-item" id="ourtab">	
+			<div class="our tab-item active" id="ourtab">	
 				<div class="row">
 					<div id="chart_div" class="gchart" onclick="drawme(this)" style="width: 900px; height: 500px;"></div>
 				</div>
@@ -143,21 +143,24 @@
         	else if(ct.id == 'chart_div'){
         	chartdata = google.visualization.arrayToDataTable([
 		  ['Day', 'TA的心情','我的心情'],
-          ['5.15',  80,	70],
-          ['5.16',  50, 80],
-          ['5.17',  90, 50],
-          ['5.18',  70, 80]
+          [3,  80,	70],
+          [6,  , 80],
+          [9,  90, 50],
+          [12,  70, 80]
         ])
         	}
         	var urchart = $.merge({
          'data' : chartdata,
 
          'options' : {
-          title: 'Mood Chart'
+          title: 'Mood Chart',
+          hAxis: {title: 'Age', minValue: 0, maxValue: 12},
+          vAxis: {title: 'Weight', minValue: 0, maxValue: 100},
+          legend: 'none'
         }
         },{});
         
-        var chart = new google.visualization.LineChart(document.getElementById(ct.id));
+        var chart = new google.visualization.ScatterChart(document.getElementById(ct.id));
         chart.draw(urchart['data'], urchart['options']);
        	}
         </script>

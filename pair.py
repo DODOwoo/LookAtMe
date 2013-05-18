@@ -1,13 +1,17 @@
 #coding=utf-8
-from bottle import route,run,response,template,error,request,redirect,static_file,default_app,view
+from bottle import route,run,response,template,error,request,redirect,static_file,default_app,view,redirect
 import json
 import mongoservice
+import sha, time
 
 @route('/show/<id>')
 @view('template/main.tpl')
 def show_heart(id):
-	yourid = 1-int(id)
-	return dict(mymood=40,yourmood=50,myid=int(id),yourid=yourid)
+	#yourid = 1-int(id)
+	#if not request.cookies.get('pairsid'):
+	#    redirect('/nologin')
+	pair = mongoservice.find_someone(id);
+	return dict(mymood=40,yourmood=50,myid=id,yourid=pair[0]["pair"])
 
 @route('/nologin')
 def nologin():
@@ -20,7 +24,8 @@ def show_log(id):
     print(mymoods)
     ourmoods['my'] = mymoods
     #get pair's id
-    urmoods = mongoservice.find_someone_log('fuluchii')
+    pair = mongoservice.find_someone(id);
+    urmoods = mongoservice.find_someone_log(pair[0]["pair"])
     ourmoods['your'] = urmoods
     return template('template/log.tpl',moods=ourmoods)
 
@@ -32,6 +37,21 @@ def adduser():
 	data["pair"] = 0
 	data["score"] = 0
 	mongoservice.insert_user(data)
+	
+@route('/login', method='POST')
+def login():
+    #return request.POST.get('name')
+    name = request.POST.get('name')
+    if not request.cookies.get('pairsid'):
+        password = request.POST.get('password')
+        user = mongoservice.check_someone(name,password)
+        if user.count() >0:
+            request.cookies['pairsid'] = sha.new(repr(time.time())).hexdigest()
+            redirect('/show/'+user[0]["name"])
+        else:
+            return 'no user';
+    else:
+        redirect('/show/'+name)
 
 @route('/mood/add')
 def add_mood():
