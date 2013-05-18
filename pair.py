@@ -16,6 +16,7 @@ def nologin():
 def show_log(id):
     ourmoods = {};
     mymoods = mongoservice.find_someone_log(id)
+    print(mymoods)
     ourmoods['my'] = mymoods
     #get pair's id
     urmoods = mongoservice.find_someone_log('fuluchii')
