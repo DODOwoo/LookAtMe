@@ -23,8 +23,9 @@ def find_someone_log(name):
 def find_someone(name):
 	return user.find({"name":name})
 
-def check_someone(name,password):
-	return user.find({"name":name,"password":password})
+def check_user_credentials(name,password):
+	checkeduser = user.find({"name":name,"password":password})
+	return checkeduser.count()> 0
 
 def insert_log(data):
 	log.insert(data)

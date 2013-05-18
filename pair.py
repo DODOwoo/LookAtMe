@@ -8,8 +8,8 @@ import sha, time
 @view('template/main.tpl')
 def show_heart(id):
 	#yourid = 1-int(id)
-	#if not request.cookies.get('pairsid'):
-	#    redirect('/nologin')
+	if not request.get_cookie('pairsid',secret='secretkey'):
+	    redirect('/nologin')
 	pair = mongoservice.find_someone(id);
 	return dict(mymood=40,yourmood=50,myid=id,yourid=pair[0]["pair"])
 
@@ -19,6 +19,8 @@ def nologin():
 
 @route('/log/<id>')
 def show_log(id):
+    if not request.get_cookie('pairsid',secret='secretkey'):
+	    redirect('/nologin')
     ourmoods = {};
     mymoods = mongoservice.find_someone_log(id)
     print(mymoods)
@@ -42,16 +44,15 @@ def adduser():
 def login():
     #return request.POST.get('name')
     name = request.POST.get('name')
-    if not request.cookies.get('pairsid'):
+    if not request.get_cookie('pairsid',secret='secretkey'):
         password = request.POST.get('password')
-        user = mongoservice.check_someone(name,password)
-        if user.count() >0:
-            request.cookies['pairsid'] = sha.new(repr(time.time())).hexdigest()
-            redirect('/show/'+user[0]["name"])
+        if(mongoservice.check_user_credentials(name,password)):
+            response.set_cookie('pairsid',name,secret='secretkey')
+            redirect('/show/%s' % name)
         else:
             return 'no user';
     else:
-        redirect('/show/'+name)
+        redirect('/show/%s' % name)
 
 @route('/mood/add')
 def add_mood():

@@ -12,15 +12,15 @@
 			<div class="menu nav-items hide" >
 				<ul>
 					<li>
-						<a href="#">
+						<a href="/show/{{myid}}">
 							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+							<span>MAIN</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/log/{{myid}}">
 							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+							<span>HISTORY</span>
 						</a>
 					</li>
 					<li>
