@@ -115,7 +115,7 @@
     var j = 0;
     arr_my.forEach(function(a,b){
 		console.log(arr_my[b][0]);
-		if(arr_my[b][0]<arr_ur[j][0])
+		if(arr_my[b][0]<arr_ur[j][0]){}
     });
 		</script>
         <script type="text/javascript">
