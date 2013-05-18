@@ -32,6 +32,8 @@ def handle_websocket():
 
 def deal_with_moodchange(data):
     yourid = data["yourid"]
+    myid = data["myid"]
+    mongoservice.update_score(dict(name=myid,score=data["mood"]))
     user = mongoservice.find_someone(yourid)
     if user.count() > 0:
         user = user[0]

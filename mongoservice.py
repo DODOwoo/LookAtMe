@@ -1,4 +1,5 @@
 from pymongo import Connection
+from datetime import datetime
 
 conn = Connection()
 db = conn.pairtalk
@@ -11,10 +12,11 @@ def insert_user(data):
 
 # data:{"name":name,"score":score}
 def update_score(data):
+	insert_log(data)
 	user.update({"name":data["name"]},{"$set":{"score":data["score"]}})
 
 # data:{"name":name,"pairname":pairname}
-def update_score(data):
+def update_pair(data):
 	user.update({"name":data["name"]},{"$set":{"pairname":data["pairname"]}})
 
 def find_someone_log(name):
@@ -28,7 +30,8 @@ def check_user_credentials(name,password):
 	return checkeduser.count()> 0
 
 def insert_log(data):
-	log.insert(data)
+    data["adddate"] = datetime.now()
+    log.insert(data)
 
 
 

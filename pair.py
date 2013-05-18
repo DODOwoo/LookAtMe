@@ -10,8 +10,9 @@ def show_heart(id):
 	#yourid = 1-int(id)
 	if not request.get_cookie('pairsid',secret='secretkey'):
 	    redirect('/nologin')
-	pair = mongoservice.find_someone(id);
-	return dict(mymood=40,yourmood=50,myid=id,yourid=pair[0]["pair"])
+	user = mongoservice.find_someone(id)
+	pair = mongoservice.find_someone(user[0]["pair"])
+	return dict(mymood=user[0]["score"],yourmood=pair[0]["score"],myid=id,yourid=user[0]["pair"])
 
 @route('/nologin')
 def nologin():
