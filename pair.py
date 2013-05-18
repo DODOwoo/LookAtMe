@@ -1,5 +1,6 @@
+#coding=utf-8
 from bottle import route,run,response,template,error,request,redirect,static_file,default_app,view
-from json import dumps
+import json
 import mongoservice
 
 @route('/show/<id>')
@@ -16,6 +17,7 @@ def nologin():
 def show_log(id):
     ourmoods = {};
     mymoods = mongoservice.find_someone_log(id)
+    print(mymoods)
     ourmoods['my'] = mymoods
     #get pair's id
     urmoods = mongoservice.find_someone_log('fuluchii')
@@ -31,7 +33,6 @@ def adduser():
 	data["score"] = 0
 	mongoservice.insert_user(data)
 
-
 @route('/mood/add')
 def add_mood():
         #insert mood{ score, memo}
@@ -41,6 +42,27 @@ def add_mood():
 def connect(secret):
         return 'id'
 
+############################################################################
+# 以下为rest接口，为hubot及第三方服务.全部以.json结尾
+############################################################################
+
+# 获取某个用户的目前mood
+@route('/getmood.json',method='GET')
+def getmood():
+	username = request.GET.get("username")
+	user = mongoservice.find_someone(username)
+	if user.count() >0:
+		user = user[0]
+		mood = dict(username=username,mood=user["score"])
+		return json.dumps(mood)
+
+
+
+
+
+##########################
+#静态资源
+##########################
 
 @route('/s/css/<fname>')
 def s(fname):

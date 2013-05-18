@@ -26,3 +26,5 @@ def find_someone(name):
 def insert_log(data):
 	log.insert(data)
 
+
+
