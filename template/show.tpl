@@ -36,7 +36,7 @@
 									<div class="fit">Name：</div><input type="text" name="name" class="ipt">
 								</li>
 								<li>
-									<div class="fit">Password:</div><input type="text" name="password" class="ipt">
+									<div class="fit">Password:</div><input type="password" name="password" class="ipt">
 								</li>
 								<li>
 									<button class="enter">enter</button>
@@ -50,7 +50,7 @@
 									<div class="fit">Name：</div><input type="text" class="ipt">
 								</li>
 								<li>
-									<div class="fit">Password:</div><input type="text" class="ipt">
+									<div class="fit">Password:</div><input type="password" class="ipt">
 								</li>
 								<li>
 									<button class="enter">signup</button>
