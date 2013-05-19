@@ -144,7 +144,7 @@
         	chartdata = google.visualization.arrayToDataTable([
 		  ['Day', 'TA的心情','我的心情'],
           [3,  80,	70],
-          [6,  , 80],
+          [6,  1, 80],
           [9,  90, 50],
           [12,  70, 80]
         ])

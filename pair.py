@@ -18,6 +18,10 @@ def show_heart(id):
 def nologin():
 	return template('template/show.tpl')
 
+@route('/setting')
+def setting():
+    return template('template/setting.tpl')
+
 @route('/log/<id>')
 def show_log(id):
     if not request.get_cookie('pairsid',secret='secretkey'):
