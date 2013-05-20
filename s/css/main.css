@@ -1,15 +1,3 @@
-ul,li{list-style: none;-webkit-padding-start: 0px;-webkit-margin-before:0;-webkit-margin-after:0;}
-a{text-decoration: none;color: black}
-.left{
-	float: left;
-}
-.row{
-	width: 100%;
-}
-.hide{
-	display: none;
-}
-
 .menu-bar{
 	position: absolute;
 	top: 20px;
@@ -39,8 +27,10 @@ a{text-decoration: none;color: black}
 }
 
 .me .title,.you .title{
-	background-color: rgb(230,230,230);
-	height: 50px;
+	background-color: rgba(250,250,250,0.7);
+	line-height: 50px;
+	text-align: center;
+	color: rgb(64,102,135)
 }
 .switch{
 	width: 10%;
@@ -54,28 +44,33 @@ a{text-decoration: none;color: black}
 
 .moodbar-con{
 	min-height: 20px;
-	margin-top: 15px;
+	margin-top: 35px;
 	margin-bottom: 15px
 }
 
 .moodbar{
 	display:block;
 	height: 20px;
-	background-color: rgb(220,220,220);
+	background-color: rgba(250,250,250,0.5);
 	width: 70%;
 	margin-left: 15%;
+	border-radius: 5px;
+	box-shadow: 0px 0px 9px rgba(200,200,255,0.8)
 }
 .moodbar em{
 	display: inline-block;
 	background-color: rgb(160,160,160);
 	height: 20px;
 	width: 0%;
+	border-radius: 5px;
+
 }
 
 .moodbar-con .mood-txt{
-	line-height: 40px;
-	font-size: 25px;
+	line-height: 80px;
+	font-size: 35px;
 	text-align: center;
+	color: rgba(255,255,255,0.7);
 }
 
 .you .writeup{
@@ -83,13 +78,6 @@ a{text-decoration: none;color: black}
 	background-color: rgb(240,240,240);
 }
 
-
-.tab-item{
-	display: none;
-}
-.active{
-	display: block;
-}
 .moodbar-con .addbtn,.moodbar-con .addbtn{
 	
 }
@@ -98,4 +86,7 @@ a{text-decoration: none;color: black}
 	margin-left: 5%;
 	margin-right: 5%;
 
+}
+body{
+	background-color: rgb(91,192,235);
 }

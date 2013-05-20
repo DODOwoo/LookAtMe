@@ -1,0 +1,20 @@
+ul,li{list-style: none;-webkit-padding-start: 0px;-webkit-margin-before:0;-webkit-margin-after:0;}
+a{text-decoration: none;color: black}
+.left{
+	float: left;
+}
+.row{
+	width: 100%;
+}
+.hide{
+	display: none;
+}
+.tab-item{
+	display: none;
+}
+.active{
+	display: block;
+}
+.clearfix{
+	clear:both;
+}

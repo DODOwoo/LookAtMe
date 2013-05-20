@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>mood log</title>
 	<link rel="stylesheet" href="/s/css/main.css" />
+	<link rel="stylesheet" href="/s/css/common.css" />
 	<style type="text/css">
 		.log{
 			height: 350px;
@@ -28,12 +29,12 @@
     arr.push(['Day','TA的心情','我的心情']);
     
     %for m in moods['my']:
-    	arr_my.push([{{m["adddate"]}},{{m["mood"]}}]);
+    	arr_my.push([{{m["adddate"]}},{{m["score"]}}]);
     %end    
     dict['my'] = arr_my.sort(function(a,b){return a[0]-b[0]});
     
     %for m in moods['your']:
-    	arr_ur.push([{{m['adddate']}},{{m['mood']}}]);
+    	arr_ur.push([{{m['adddate']}},{{m['score']}}]);
     %end
     dict['your'] = arr_ur.sort(function(a,b){return a[0]-b[0]});
  

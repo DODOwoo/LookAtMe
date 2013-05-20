@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>demo</title>
 	<link rel="stylesheet" href="/s/css/main.css" />
+	<link rel="stylesheet" href="/s/css/common.css" />
 </head>
 <body>
 	<div class="container">	
@@ -23,7 +24,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/setting/{{myid}}">
+						<a href="/setting/{{me['name']}}">
 							<img src="http://placehold.it/50x50" alt="" />
 							<span>SETTING</span>
 						</a>
@@ -51,7 +52,7 @@
 		<div class="tab-con diary">
 			<div class="me tab-item" id="mytab">
 				<div class="row title">
-					我的心情：可以在这里随机显示点什么
+					我目前的心情值：
 				</div>		
 				<div class="row yourheart">
 					<div class="moodbar-con">
@@ -72,10 +73,11 @@
 						</div>
 					</div>	
 				</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="you tab-item active" id="yourtab">
 				<div class="row title">
-					TA的心情：可以在这里随机显示点什么
+					{{you["name"]}}目前的心情值：
 				</div>		
 				<div class="row yourheart">
 					<div class="moodbar-con">
@@ -88,6 +90,7 @@
 						不知道放点什么，也许是提示语，也许是TA说的话。也许有个输入框，反正写功能的控件都先不做。
 					</div>
 				</div>
+				<div class="clearfix"></div>
 
 			</div>
 		</div>

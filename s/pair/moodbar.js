@@ -29,6 +29,13 @@
  			ws = this.ws;
  		
  		function refresh(){
+ 			if(mood < 15){
+ 				bar.css('background-color','rgba(200,40,40,1)');
+ 			}else if(mood>70){
+ 				bar.css('background-color','rgba(70,150,70,1)');
+ 			}else{
+ 				bar.css('background-color','rgba(190,190,30,1)');
+ 			}
  			bar.css('width',mood+'%');
  			tex.text(mood+"%");
  		}
@@ -58,13 +65,20 @@
  			})
 
  		}
- 		refresh();
+ 		this.render();
  	}
 
  	Moodbar.prototype.render = function(){
  		var bar = this.bar
  			,mood = this.mood
  			,tex = this.tex;
+ 		if(mood < 15){
+ 				bar.css('background-color','rgba(200,40,40,1)');
+ 			}else if(mood>70){
+ 				bar.css('background-color','rgba(70,150,70,1)');
+ 			}else{
+ 				bar.css('background-color','rgba(190,190,30,1)');
+ 			}
  		bar.css('width',mood+'%');
  		tex.text(mood+"%");
  	}

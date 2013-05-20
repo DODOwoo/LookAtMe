@@ -37,8 +37,8 @@ def updateSetting():
 
 @route('/log/<id>')
 def show_log(id):
-    if request.get_cookie('pairsid',secret='secretkey'):
-	    redirect('/nologin')
+    # if request.get_cookie('pairsid',secret='secretkey'):
+	   #  redirect('/nologin')
     ourmoods = {};
     mymoods = mongoservice.find_someone_log(id)
     ourmoods['my'] = mymoods[:]
@@ -98,8 +98,8 @@ def getmood():
 
 @route('/getcrazy.json',method='GET')
 def getcrazy():
-    s =  mongoservice.find_and_remove_crazy()
-    return s
+    return mongoservice.find_and_remove_crazy()
+    
 
 
 ##########################

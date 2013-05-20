@@ -4,6 +4,7 @@
 	<link rel="stylesheet" href="/s/css/foundation.css">
 	<link rel="stylesheet" href="/s/css/normalize.css">
 	<link rel="stylesheet" href="/s/css/look.css" media="screen">
+	<link rel="stylesheet" href="/s/css/common.css">
 	<meta charset="utf-8">
 </head>
 <body>
@@ -44,7 +45,7 @@
 							</ul>
 							
 						</form>
-						<div class="fm tab-item" id="signup">
+						<form class="fm tab-item" id="signup">
 							<ul>
 								<li>
 									<div class="fit">Name：</div><input type="text" class="ipt">
@@ -56,7 +57,7 @@
 									<button class="enter">signup</button>
 								</li>
 							</ul>
-						</div>
+						</form>
 					</div>
 				</div>
 		</div>

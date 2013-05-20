@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>mood log</title>
 	<link rel="stylesheet" href="/s/css/main.css" />
+	<link rel="stylesheet" href="/s/css/common.css" />
 </head>
 <body>
 	<div class="container">	
