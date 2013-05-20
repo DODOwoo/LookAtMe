@@ -50,13 +50,16 @@
 			<div class="me tab-item active" id="mytab">	
 				<form action="/set" method="post">
 					<div class="row">
-						Pair:<input type="text" name="pair" value="{{pair}}" />
+						Pair:<input type="text" name="pairname" value="{{pairname}}" />
 					</div>
 					<div class="row">
 						Password:<input type="password" name="password" value="{{password}}" />
 					</div>
 					<div class="row">
 						Phone:<input type="text" name="phone" value="{{phone}}" />
+					</div>
+					<div class="row">
+						GTalk:<input type="text" name="gtalk" value="{{gtalk}}" />
 					</div>
 					<input type="hidden" name="name" value="{{myid}}"/>
 					<div class="row">
@@ -67,8 +70,8 @@
 		</div>
 	</div>
 </div>
-<!--<script src="/s/seajs/sea.js"
+<script src="/s/seajs/sea.js"
         data-config="pair/config.js"
-        data-main="pair/log.js"></script>-->
+        data-main="pair/log.js"></script>
 </body>
 </html>

@@ -15,8 +15,8 @@ def insert_user(data):
 
 # data:{"name":name,"score":score}
 def update_score(data):
-	insert_log(data)
-	user.update({"name":data["name"]},{"$set":{"score":data["score"]}})
+    #insert_log(data)
+    user.update({"name":data["name"]},{"$set":{"score":data["score"]}})
 
 # data:{"name":name,"pairname":pairname}
 # def update_score(data):
@@ -25,7 +25,7 @@ def update_pair(data):
 	user.update({"name":data["name"]},{"$set":{"pairname":data["pairname"]}})
 
 def update_user(data):
-    user.update({"name":data["name"]},{"$set":{"pair":data["pair"],"password":data["password"],"phone":data["phone"]}})
+    user.update({"name":data["name"]},{"$set":{"pairname":data["pairname"],"password":data["password"],"phone":data["phone"],"gtalk":data["gtalk"]}})
 
 def find_someone_log(name):
 	return log.find({"name":name})
@@ -38,9 +38,10 @@ def find_someone(name):
 		return None
 
 def find_pair(name):
-	user = find_someone(name)
-	if user and user["pairname"]:
-		return find_someone(user["pairname"])
+    user = find_someone(name)
+    if user and "pairname" in user and user["pairname"] <> '':
+        return find_someone(user["pairname"])
+    return dict(name='',score=0)
 
 
 def check_user_credentials(name,password):

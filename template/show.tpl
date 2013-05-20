@@ -44,13 +44,13 @@
 							</ul>
 							
 						</form>
-						<div class="fm tab-item" id="signup">
+						<form action="/adduser" class="fm tab-item" id="signup" method="POST">
 							<ul>
 								<li>
-									<div class="fit">Name：</div><input type="text" class="ipt">
+									<div class="fit">Name：</div><input type="text" name="name" class="ipt">
 								</li>
 								<li>
-									<div class="fit">Password:</div><input type="password" class="ipt">
+									<div class="fit">Password:</div><input type="password" name="password" class="ipt">
 								</li>
 								<li>
 									<button class="enter">signup</button>
