@@ -19,6 +19,9 @@ def update_score(data):
 def update_pair(data):
 	user.update({"name":data["name"]},{"$set":{"pairname":data["pairname"]}})
 
+def update_user(data):
+    user.update({"name":data["name"]},{"$set":{"pair":data["pair"],"password":data["password"],"phone":data["phone"]}})
+
 def find_someone_log(name):
 	return log.find({"name":name})
 

@@ -48,15 +48,21 @@
 		</div>
 		<div class="tab-con diary">
 			<div class="me tab-item active" id="mytab">	
-				<div class="row">
-				Pair:<input type="text" name="pair" />
-				</div>
-				<div class="row">
-				Password:<input type="password" name="password" />
-				</div>
-				<div class="row">
-				Phone:<input type="text" name="phone" />
-				</div>
+				<form action="/set" method="post">
+					<div class="row">
+						Pair:<input type="text" name="pair" value="{{pair}}" />
+					</div>
+					<div class="row">
+						Password:<input type="password" name="password" value="{{password}}" />
+					</div>
+					<div class="row">
+						Phone:<input type="text" name="phone" value="{{phone}}" />
+					</div>
+					<input type="hidden" name="name" value="{{myid}}"/>
+					<div class="row">
+						<button>Update</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

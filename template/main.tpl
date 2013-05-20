@@ -24,9 +24,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/setting/{{myid}}">
 							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+							<span>SETTING</span>
 						</a>
 					</li>
 					<li>
