@@ -43,6 +43,8 @@ def deal_with_moodchange(data):
     mongoservice.update_score(mood)
     mongoservice.insert_log(dict(adddate=datetime.now(),mood=data["mood"],user=data["myid"]))
     yourid = data["yourid"]
+    myid = data["myid"]
+    mongoservice.update_score(dict(name=myid,score=data["mood"]))
     user = mongoservice.find_someone(yourid)
 
     if user:

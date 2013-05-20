@@ -1,5 +1,6 @@
 from pymongo import Connection
 from bson.json_util import dumps
+from datetime import datetime
 
 conn = Connection()
 db = conn.pairtalk
@@ -14,11 +15,17 @@ def insert_user(data):
 
 # data:{"name":name,"score":score}
 def update_score(data):
+	insert_log(data)
 	user.update({"name":data["name"]},{"$set":{"score":data["score"]}})
 
 # data:{"name":name,"pairname":pairname}
 # def update_score(data):
 # 	user.update({"name":data["name"]},{"$set":{"pairname":data["pairname"]}})
+def update_pair(data):
+	user.update({"name":data["name"]},{"$set":{"pairname":data["pairname"]}})
+
+def update_user(data):
+    user.update({"name":data["name"]},{"$set":{"pair":data["pair"],"password":data["password"],"phone":data["phone"]}})
 
 def find_someone_log(name):
 	return log.find({"name":name})
@@ -41,7 +48,8 @@ def check_user_credentials(name,password):
 	return checkeduser.count()> 0
 
 def insert_log(data):
-	log.insert(data)
+    data["adddate"] = datetime.now()
+    log.insert(data)
 
 def find_and_remove_crazy():
 	w = dumps(crazy.find())

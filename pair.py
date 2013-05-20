@@ -21,6 +21,20 @@ def show_heart(id):
     pair = mongoservice.find_pair(id)
     return dict(me=user,you=pair)
 
+@route('/setting/<id>')
+@view('template/setting.tpl')
+def setting(id):
+    user = mongoservice.find_someone(id)
+    return dict(myid=id,password=user[0]["password"],phone=user[0]["phone"],pair=user[0]["pair"])
+
+@route('/set', method='POST')
+def updateSetting():
+    name = request.POST.get('name')
+    if not request.get_cookie('pairsid',secret='secretkey'):
+        redirect('/nologin')
+    mongoservice.update_user(dict(name=name,pair=request.POST.get('pair'),phone=request.POST.get('phone'),password=request.POST.get('password')))
+    redirect('/show/%s' % name)
+
 @route('/log/<id>')
 def show_log(id):
     if request.get_cookie('pairsid',secret='secretkey'):
