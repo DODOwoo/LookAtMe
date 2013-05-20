@@ -29,9 +29,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/logout">
 							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+							<span>LOGOUT</span>
 						</a>
 					</li>
 				</ul>

@@ -4,6 +4,7 @@ import json
 import mongoservice
 import bson
 import sha, time
+from datetime import timedelta
 
 
 @route('/nologin')
@@ -71,6 +72,12 @@ def login():
             return 'no user';
     else:
         redirect('/show/%s' % name)
+
+@route('/logout')
+def logout():
+    if not request.get_cookie('pairsid',secret='secretkey'):
+        request.set_cookie('pairsid',secret='secretkey',expires=timedelta.min)
+    redirect('/nologin')
 
 @route('/mood/add')
 def add_mood():
