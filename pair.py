@@ -4,6 +4,7 @@ import json
 import mongoservice
 import bson
 import sha, time
+from datetime import timedelta
 
 
 @route('/nologin')
@@ -14,7 +15,7 @@ def nologin():
 @view('template/main.tpl')
 def show_heart(id):
     #yourid = 1-int(id)
-    if request.get_cookie('pairsid',secret='secretkey'):
+    if not request.get_cookie('pairsid',secret='secretkey'):
         redirect('/nologin')
 
     user = mongoservice.find_someone(id)
@@ -25,20 +26,23 @@ def show_heart(id):
 @view('template/setting.tpl')
 def setting(id):
     user = mongoservice.find_someone(id)
-    return dict(myid=id,password=user[0]["password"],phone=user[0]["phone"],pair=user[0]["pair"])
+    return dict(myid=id,password=user["password"],phone=user["phone"],pairname=user["pairname"],gtalk=user["gtalk"])
 
 @route('/set', method='POST')
 def updateSetting():
     name = request.POST.get('name')
     if not request.get_cookie('pairsid',secret='secretkey'):
         redirect('/nologin')
-    mongoservice.update_user(dict(name=name,pair=request.POST.get('pair'),phone=request.POST.get('phone'),password=request.POST.get('password')))
+    pairname = request.POST.get('pairname')
+    if not mongoservice.find_someone(pairname):
+        pairname=''
+    mongoservice.update_user(dict(name=name,pairname=pairname,phone=request.POST.get('phone'),password=request.POST.get('password'),gtalk=request.POST.get('gtalk')))
     redirect('/show/%s' % name)
 
 @route('/log/<id>')
 def show_log(id):
-    # if request.get_cookie('pairsid',secret='secretkey'):
-	   #  redirect('/nologin')
+    if not request.get_cookie('pairsid',secret='secretkey'):
+	    redirect('/nologin')
     ourmoods = {};
     mymoods = mongoservice.find_someone_log(id)
     ourmoods['my'] = mymoods[:]
@@ -52,11 +56,16 @@ def show_log(id):
 
 @route('/adduser',method='POST')
 def adduser():
-	data = {}
-	data["name"] = request.POST.get("name")
-	data["pair"] = 0
-	data["score"] = 0
-	mongoservice.insert_user(data)
+    data = {}
+    data["name"] = request.POST.get("name")
+    if not mongoservice.find_someone(data["name"]):
+        data["password"] = request.POST.get("password")
+        data["pairname"] = ''
+        data["phone"] = ''
+        data["gtalk"] = ''
+        data["score"] = 0
+        mongoservice.insert_user(data)
+    redirect('/show/%s' % data["name"])
 	
 @route('/login', method='POST')
 def login():
@@ -71,6 +80,12 @@ def login():
             return 'no user';
     else:
         redirect('/show/%s' % name)
+
+@route('/logout')
+def logout():
+    if not request.get_cookie('pairsid',secret='secretkey'):
+        request.set_cookie('pairsid',secret='secretkey',expires=timedelta.min)
+    redirect('/nologin')
 
 @route('/mood/add')
 def add_mood():

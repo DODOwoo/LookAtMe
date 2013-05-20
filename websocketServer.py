@@ -41,10 +41,10 @@ def handle_websocket():
 def deal_with_moodchange(data):
     mood = dict(name = data["myid"],score=data["mood"])
     mongoservice.update_score(mood)
-    # mongoservice.insert_log(dict(adddate=datetime.now(),score=data["mood"],user=data["myid"]))
+    mongoservice.insert_log(dict(score=data["mood"],name=data["myid"]))
     yourid = data["yourid"]
     myid = data["myid"]
-    mongoservice.update_score(dict(name=myid,score=data["mood"]))
+    #mongoservice.update_score(dict(name=myid,score=data["mood"]))
     user = mongoservice.find_someone(yourid)
 
     if user:

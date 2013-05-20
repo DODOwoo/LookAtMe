@@ -12,6 +12,7 @@
 			<div class="menu-btn left nav-btn"></div>
 			<div class="menu nav-items hide" >
 				<ul>
+					<li>
 						<a href="/show/{{me['name']}}">
 							<img src="http://placehold.it/50x50" alt="" />
 							<span>MAIN</span>
@@ -19,7 +20,7 @@
 					</li>
 					<li>
 						<a href="/log/{{me['name']}}">
-							<img src="http://placehold.it/50x50" alt="" />
+							 <img src="http://placehold.it/50x50" alt="" />
 							<span>HISTORY</span>
 						</a>
 					</li>
@@ -30,9 +31,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="/logout">
 							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+							<span>LOGOUT</span>
 						</a>
 					</li>
 				</ul>
