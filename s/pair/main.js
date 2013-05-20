@@ -12,7 +12,7 @@ define(function(require) {
   var y_m = new Moodbar('#yourtab .moodbar-con',yourmood,{});
   y_m.init(yourid,myid);
 
-  var websocket = new WSocket("ws://localhost:8081/changemood",yourid,myid);
+  var websocket = new WSocket("ws://localhost:8081/changemood",y_m,myid);
   websocket.init();
   var m_m = new Moodbar('#mytab .moodbar-con',mymood,{"writable":true,"ws":websocket});
   m_m.init(myid,yourid);

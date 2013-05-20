@@ -1,15 +1,18 @@
 #coding=utf-8
 from bottle import request, Bottle, abort
-import json
-import time 
 import twilioService
 import mongoservice
+import json
+from datetime import datetime
+
+
 app = Bottle()
 app.debug = True
 
 conns = []
 minimal_score = 15
 max_score = 100
+
 
 @app.route('/changemood')
 def handle_websocket():
@@ -23,21 +26,32 @@ def handle_websocket():
         try:
             message = wsock.receive()
             for w in conns:
-                w.send(message)
+                try:
+                    w.send(message)
+                except WebSocketError:
+                    conns.remove(w)
+                    continue
             data = json.loads(message)
-            print(data)
+            # print(data)
             deal_with_moodchange(data)
-        except WebSocketError:
+        except WebSocketError as e:
+            print(e)
             break
 
 def deal_with_moodchange(data):
+    mood = dict(name = data["myid"],score=data["mood"])
+    mongoservice.update_score(mood)
+    mongoservice.insert_log(dict(adddate=datetime.now(),mood=data["mood"],user=data["myid"]))
     yourid = data["yourid"]
     user = mongoservice.find_someone(yourid)
-    if user.count() > 0:
-        user = user[0]
+
+    if user:
         phone = user["phone"]
         mood = data["mood"]
         if mood < minimal_score:
+            pair = mongoservice.find_pair(data["myid"])
+            if pair:
+                mongoservice.modify_crazy(dict(name=data["myid"],pairname=pair["name"],pairmail=pair["gtalk"],mood=data["mood"]))
             sms_minimal(mood,phone) 
 
 

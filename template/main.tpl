@@ -11,14 +11,13 @@
 			<div class="menu-btn left nav-btn"></div>
 			<div class="menu nav-items hide" >
 				<ul>
-					<li>
-						<a href="/show/{{myid}}">
+						<a href="/show/{{me['name']}}">
 							<img src="http://placehold.it/50x50" alt="" />
 							<span>MAIN</span>
 						</a>
 					</li>
 					<li>
-						<a href="/log/{{myid}}">
+						<a href="/log/{{me['name']}}">
 							<img src="http://placehold.it/50x50" alt="" />
 							<span>HISTORY</span>
 						</a>
@@ -95,10 +94,10 @@
 	</div>
 </div>
 <script>
-	var mymood = {{mymood}};
-	var yourmood = {{yourmood}};
-	var myid = '{{myid}}';
-	var yourid = '{{yourid}}';
+	var mymood = {{me["score"]}};
+	var yourmood = {{you["score"]}};
+	var myid = '{{me["name"]}}';
+	var yourid = '{{you["name"]}}';
 </script>
 <script src="/s/seajs/sea.js"
         data-config="pair/config.js"

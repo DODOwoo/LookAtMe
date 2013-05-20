@@ -2,33 +2,37 @@
 from bottle import route,run,response,template,error,request,redirect,static_file,default_app,view,redirect
 import json
 import mongoservice
+import bson
 import sha, time
 
-@route('/show/<id>')
-@view('template/main.tpl')
-def show_heart(id):
-	#yourid = 1-int(id)
-	if not request.get_cookie('pairsid',secret='secretkey'):
-	    redirect('/nologin')
-	pair = mongoservice.find_someone(id);
-	return dict(mymood=40,yourmood=50,myid=id,yourid=pair[0]["pair"])
 
 @route('/nologin')
 def nologin():
 	return template('template/show.tpl')
 
+@route('/show/<id>')
+@view('template/main.tpl')
+def show_heart(id):
+    #yourid = 1-int(id)
+    if request.get_cookie('pairsid',secret='secretkey'):
+        redirect('/nologin')
+
+    user = mongoservice.find_someone(id)
+    pair = mongoservice.find_pair(id)
+    return dict(me=user,you=pair)
+
 @route('/log/<id>')
 def show_log(id):
-    if not request.get_cookie('pairsid',secret='secretkey'):
+    if request.get_cookie('pairsid',secret='secretkey'):
 	    redirect('/nologin')
     ourmoods = {};
     mymoods = mongoservice.find_someone_log(id)
-    print(mymoods)
-    ourmoods['my'] = mymoods
+    ourmoods['my'] = mymoods[:]
     #get pair's id
-    pair = mongoservice.find_someone(id);
-    urmoods = mongoservice.find_someone_log(pair[0]["pair"])
-    ourmoods['your'] = urmoods
+    pair = mongoservice.find_pair(id);
+    urmoods = mongoservice.find_someone_log(pair["name"])
+    ourmoods['your'] = urmoods[:]
+    print(ourmoods)
     return template('template/log.tpl',moods=ourmoods)
 
 
@@ -78,7 +82,10 @@ def getmood():
 		return json.dumps(mood)
 
 
-
+@route('/getcrazy.json',method='GET')
+def getcrazy():
+    s =  mongoservice.find_and_remove_crazy()
+    return s
 
 
 ##########################
@@ -94,4 +101,4 @@ def js(filepath):
 	return static_file(filepath,'./s/')
 
 
-run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8083, debug=True)
