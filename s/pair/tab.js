@@ -24,9 +24,13 @@ define(function(require,exports,moduel){
 		tabs.each(function(n){
 			var tab = $(this);
 			tab.on('click',function(){
+				var activetab = tabs.filter('.active')
 				var itemname = tab.attr('data-target');
 				var active = items.filter('.active');
 				active.removeClass('active');
+				activetab.removeClass('active')
+				tab.addClass("active");
+
 				itemdic[itemname].addClass('active');
 			})
 		})

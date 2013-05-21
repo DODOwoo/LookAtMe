@@ -51,7 +51,7 @@ def show_log(id):
     urmoods = mongoservice.find_someone_log(pair["name"])
     ourmoods['your'] = urmoods[:]
     print(ourmoods)
-    return template('template/log.tpl',moods=ourmoods)
+    return template('template/log.tpl',dict(moods=ourmoods,name=id))
 
 
 @route('/adduser',method='POST')
@@ -104,11 +104,19 @@ def connect(secret):
 @route('/getmood.json',method='GET')
 def getmood():
 	username = request.GET.get("username")
-	user = mongoservice.find_someone(username)
-	if user.count() >0:
-		user = user[0]
-		mood = dict(username=username,mood=user["score"])
-		return json.dumps(mood)
+	user = mongoservice.find_someone_gt(username)
+    
+	mood = dict(username=user["name"],mood=user["score"])
+	return json.dumps(mood)
+
+@route('/getpairmood.json',method='GET')
+def getpairmood():
+    username = request.GET.get("username")
+    print(username)
+    user = mongoservice.find_pair_gt(username)
+    print(user)
+    mood = dict(username=user["name"],mood=user["score"])
+    return json.dumps(mood)
 
 
 @route('/getcrazy.json',method='GET')

@@ -22,10 +22,10 @@
 						
 						<div class="btns tabs ">
 							<ul>
-								<li class="left" data-target="login">
+								<li class="left tabtag active" data-target="login">
 									<a href="javascript:;">login</a>
 								</li>
-								<li class="left" data-target="signup">
+								<li class="left tabtag" data-target="signup">
 									<a href="javascript:;">signup</a>
 								</li>
 							</ul>

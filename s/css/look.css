@@ -31,7 +31,7 @@ a{
 	left: 50%;
 	width: 300px;
 	margin-left: -150px;
-	margin-bottom: -190px;
+	margin-bottom: -230px;
 }
 
 .top .btns button{
@@ -125,6 +125,12 @@ a{
 }
 .clearfix{
 	clear:both;
+}
+
+
+.tabs .active {
+	color: rgba(240,240,240,0.8);
+	background-color: rgba(80,122,145,0.2);
 }
 
 

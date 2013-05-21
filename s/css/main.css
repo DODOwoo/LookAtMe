@@ -8,18 +8,27 @@
 .menu-btn{
 	width: 60px;
 	height: 60px;
-	background: url("http://placehold.it/60x60&text=menu")
+	background: url("/s/img/menu.png")
 }
 
 
 .menu li{
 	float: left;
-	margin-left: 30px;
+	margin-left: 40px;
 	height: 50px;
+	color: rgba(255,255,255,0.8);
+	-webkit-transition:all .1s linear;
+}
+.menu li a{
+		color: rgba(255,255,255,0.8);
+
+}
+.menu li:hover{
+	font-size: 20px;
 }
 
 .mainbar{
-	margin-top: 100px;
+	margin-top: 160px;
 }
 
 .main{
@@ -87,6 +96,30 @@
 	margin-right: 5%;
 
 }
+.btn:hover{
+	opacity: 0.7;
+}
 body{
 	background-color: rgb(91,192,235);
+}
+
+.tab-item{
+	padding-bottom: 20px;
+	background-color: rgba(200,192,245,0.6)
+}
+.tabs .tabtag{
+	margin-top: 10%;
+	margin-left: 20%;
+	width: 80%;
+	line-height: 50px;
+	background-color: rgba(240,240,240,0.5);
+	color: rgba(40,40,40,0.8);
+	text-align: center;
+
+}
+.tabs .active .tabtag{
+	width: 100%;
+	margin-left: 0;
+	color: rgba(240,240,240,0.8);
+	background-color: rgba(80,122,145,0.9);
 }

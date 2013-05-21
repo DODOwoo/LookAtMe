@@ -13,29 +13,30 @@
 			<div class="menu nav-items hide" >
 				<ul>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/show/{{me['name']}}">
+							<img src="/s/img/icon1.png" alt="" />
+							<span>主页</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/log/{{me['name']}}">
+							 <img src="/s/img/icon2.png" alt="" />
+							<span>历史</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/setting/{{me['name']}}">
+							<img src="/s/img/icon3.png" alt="" />
+							<span>设置</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/logout">
+							<img src="/s/img/icon4.png" alt="" />
+							<span>登出</span>
 						</a>
 					</li>
+					<li><a href="https://github.com/DODOwoo/LookAtMe" ref=><img src="/s/img/pusheencat.png" alt="" /><span>fork me</span></a></li>
 				</ul>
 			</div>
 		</div>

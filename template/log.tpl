@@ -49,29 +49,30 @@
 			<div class="menu nav-items hide" >
 				<ul>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/show/{{name}}">
+							<img src="/s/img/icon1.png" alt="" />
+							<span>主页</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/log/{{name}}">
+							 <img src="/s/img/icon2.png" alt="" />
+							<span>历史</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/setting/{{name}}">
+							<img src="/s/img/icon3.png" alt="" />
+							<span>设置</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MENU-ITEM</span>
+						<a href="/logout">
+							<img src="/s/img/icon4.png" alt="" />
+							<span>登出</span>
 						</a>
 					</li>
+					<li><a href="https://github.com/DODOwoo/LookAtMe" ref=><img src="/s/img/pusheencat.png" alt="" /><span>fork me</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -79,13 +80,13 @@
 		<div class="left switch tabs">
 			<ul>
 				<li data-target="yourtab">
-					<a href="javascript:;"><img src="http://placehold.it/60x60&text=YOUR"></a>
+					<a href="javascript:;"><div class="tabtag">you</div></a>
 				</li>
 				<li data-target="mytab">
-					<a href="javascript:;"><img src="http://placehold.it/60x60&text=MY"></a>
+					<a href="javascript:;"><div class="tabtag">me</div></a>
 				</li>
-				<li data-target="ourtab">
-					<a href="javascript:;"><img src="http://placehold.it/60x60&text=OUR"></a>
+				<li data-target="ourtab" class="active">
+					<a href="javascript:;"><div class="tabtag">our</div></a>
 				</li>
 			</ul>
 		</div>

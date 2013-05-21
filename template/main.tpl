@@ -14,39 +14,42 @@
 				<ul>
 					<li>
 						<a href="/show/{{me['name']}}">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>MAIN</span>
+							<img src="/s/img/icon1.png" alt="" />
+							<span>主页</span>
 						</a>
 					</li>
 					<li>
 						<a href="/log/{{me['name']}}">
-							 <img src="http://placehold.it/50x50" alt="" />
-							<span>HISTORY</span>
+							 <img src="/s/img/icon2.png" alt="" />
+							<span>历史</span>
 						</a>
 					</li>
 					<li>
 						<a href="/setting/{{me['name']}}">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>SETTING</span>
+							<img src="/s/img/icon3.png" alt="" />
+							<span>设置</span>
 						</a>
 					</li>
 					<li>
 						<a href="/logout">
-							<img src="http://placehold.it/50x50" alt="" />
-							<span>LOGOUT</span>
+							<img src="/s/img/icon4.png" alt="" />
+							<span>登出</span>
 						</a>
 					</li>
+					<li><a href="https://github.com/DODOwoo/LookAtMe" ref=><img src="/s/img/pusheencat.png" alt="" /><span>fork me</span></a></li>
 				</ul>
 			</div>
 		</div>
 	<div class="row mainbar">
 		<div class="left switch tabs">
 			<ul>
-				<li data-target="yourtab">
-					<a href="javascript:;"><img src="http://placehold.it/60x60&text=YOUR"></a>
+				<li data-target="yourtab" class="active">
+					<a href="javascript:;">
+						<div class="tabtag">{{you["name"]}}</div>
+					</a>
 				</li>
 				<li data-target="mytab">
-					<a href="javascript:;"><img src="http://placehold.it/60x60&text=MY"></a>
+					<a href="javascript:;"><div class="tabtag">{{me["name"]}}</div></a>
 				</li>
 			</ul>
 		</div>
@@ -87,9 +90,7 @@
 						</span>
 						<div class="mood-txt"></div>
 					</div>	
-					<div class="writeup row">
-						不知道放点什么，也许是提示语，也许是TA说的话。也许有个输入框，反正写功能的控件都先不做。
-					</div>
+					
 				</div>
 				<div class="clearfix"></div>
 

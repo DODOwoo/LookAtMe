@@ -37,6 +37,18 @@ def find_someone(name):
 	else:
 		return None
 
+def find_someone_gt(name):
+	cursor = user.find({"gtalk":name})
+	if cursor.count() >0:
+		return cursor[0]
+	else:
+		return None
+def find_pair_gt(name):
+    user = find_someone_gt(name)
+    if user and "pairname" in user and user["pairname"] <> '':
+        return find_someone(user["pairname"])
+    return dict(name='',score=0)
+
 def find_pair(name):
     user = find_someone(name)
     if user and "pairname" in user and user["pairname"] <> '':
