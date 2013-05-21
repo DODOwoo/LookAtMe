@@ -26,7 +26,8 @@ def show_heart(id):
 @view('template/setting.tpl')
 def setting(id):
     user = mongoservice.find_someone(id)
-    return dict(myid=id,password=user["password"],phone=user["phone"],pairname=user["pairname"],gtalk=user["gtalk"])
+    #return dict(myid=id,password=user["password"],phone=user["phone"],pairname=user["pairname"],gtalk=user["gtalk"])
+    return dict(me=user)
 
 @route('/set', method='POST')
 def updateSetting():

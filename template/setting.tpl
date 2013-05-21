@@ -52,18 +52,18 @@
 			<div class="me tab-item active" id="mytab">	
 				<form action="/set" method="post">
 					<div class="row">
-						Pair:<input type="text" name="pairname" value="{{pairname}}" />
+						Pair:<input type="text" name="pairname" value="{{me['pairname']}}" />
 					</div>
 					<div class="row">
-						Password:<input type="password" name="password" value="{{password}}" />
+						Password:<input type="password" name="password" value="{{me['password']}}" />
 					</div>
 					<div class="row">
-						Phone:<input type="text" name="phone" value="{{phone}}" />
+						Phone:<input type="text" name="phone" value="{{me['phone']}}" />
 					</div>
 					<div class="row">
-						GTalk:<input type="text" name="gtalk" value="{{gtalk}}" />
+						GTalk:<input type="text" name="gtalk" value="{{me['gtalk']}}" />
 					</div>
-					<input type="hidden" name="name" value="{{myid}}"/>
+					<input type="hidden" name="name" value="{{me['name']}}"/>
 					<div class="row">
 						<button>Update</button>
 					</div>
