@@ -18,6 +18,13 @@
       function drawChart() {
       	$('div.tab-item.active').find('.gchart').click();
       }
+      
+      
+    var formatDate = function(d){
+    	var date = new Date(d);
+    	var hour = date.getHours();
+    	return Math.floor(hour/3) * 3;
+    }
     </script>
     <script>
     var dict = {};    
@@ -29,17 +36,18 @@
     arr.push(['Day','TA的心情','我的心情']);
     
     %for m in moods['my']:
-    	arr_my.push(['{{m["adddate"]}}',{{m["score"]}}]);
+    	arr_my.push([formatDate('{{m["adddate"]}}'),{{m["score"]}}]);
     %end    
     dict['my'] = arr_my.sort(function(a,b){return a[0]-b[0]});
     
     %for m in moods['your']:
-    	arr_ur.push(['{{m['adddate']}}',{{m['score']}}]);
+       	arr_ur.push([formatDate('{{m['adddate']}}'),{{m['score']}}]);
     %end
     dict['your'] = arr_ur.sort(function(a,b){return a[0]-b[0]});
  
     arr.sort(function(a,b){return b[0]-a[0]})
     dict['our'] = arr;
+    
     </script>
 </head>
 <body>
